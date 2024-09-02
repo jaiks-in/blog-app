@@ -1,0 +1,16 @@
+{
+  "name": "@jaiksinn/common-zod",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@jaiksinn/common-zod": "^1.0.0",
+    "zod": "^3.23.8"
+  }
+}
