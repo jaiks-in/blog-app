@@ -45,7 +45,7 @@ userRouter.post('/signup',async (c)=>{
       return c.text("Invalid Details");
     }
   })
-  userRouter.post('/login',async (c)=>{
+  userRouter.post('/signin',async (c)=>{
     const body =c.req.json();
     const prisma=new PrismaClient({
       datasourceUrl:c.env.DATABASE_URL

@@ -6,12 +6,14 @@ import { decode, sign, verify } from 'hono/jwt'
 import { Prisma } from '../node_modules/.prisma/client/index';
 import { userRouter } from './routes/user';
 import { blogRouter } from './routes/blog';
+import {cors} from 'hono/cors'
 const app = new Hono<{
   Bindings:{
     DATABASE_URL:String,
     JWT_TOKEN:String
   }
 }>()
+app.use('/*',cors());
     app.route('/api/v1/user',userRouter);
     app.route('/api/v1/blog',blogRouter)
 // app.post('/api/v1/signup', async (c) => {
