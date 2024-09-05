@@ -67,10 +67,10 @@ userRouter.post('/signup',async (c)=>{
         c.status(403);
   
       }
+      return c.json(jwt)
     }catch(e){
       
-  
+      return c.text("invalid details")
     }
-    return c.text("login successfully")
   })
 

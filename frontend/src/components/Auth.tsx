@@ -17,7 +17,7 @@ const Auth=({type}:{type:"signup" | "signin"})=>{
             console.log(response)
             const jwt=response.data;
             localStorage.setItem('jwt',jwt);
-            navigate('/blog')
+            navigate('/blogs')
         }catch(e){
             console.log(e);
         }
@@ -31,12 +31,12 @@ return(
            <Link to="/signin">{type=="signin"?"signup":"signin"}</Link>
            </>
         </div>
-        <LabelledInput type="text" label="Name" placeholder="jai..." onChange={(c)=>{
+        {type=="signup"? <LabelledInput type="text" label="Name" placeholder="jai..." onChange={(c)=>{
                 setPostInput({
                     ...postInput,
                     name:c.target.value
                 })
-        }}/>
+        }}/>:null}
         <LabelledInput type={"password"} label="password" placeholder="12345" onChange={(c)=>{
                 setPostInput({
                     ...postInput,
