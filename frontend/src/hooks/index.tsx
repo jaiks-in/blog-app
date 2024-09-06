@@ -47,7 +47,7 @@ export const useBlogs = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get(`${BACKEND_URL}/api/v1/blog/bulk`, {
+        const response = await axios.get(`${BACKEND_URL}/api/v1/blog/`, {
           headers: {
             Authorization: localStorage.getItem('jwt') || '', // Fallback to empty string if jwt is missing
           },
