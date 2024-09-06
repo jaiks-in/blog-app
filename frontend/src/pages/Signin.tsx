@@ -1,4 +1,4 @@
-import Auth from "../components/Auth";
+import {Auth} from "../components/Auth";
 
 const Signin=()=>{
 return(

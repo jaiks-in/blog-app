@@ -9,7 +9,6 @@ interface BlogCardProps{
 }
 const BlogCard =({authorName,title,content,publishedDate}:BlogCardProps)=>{
     const authName=authorName[0];
-    console.log(authName)
     return(
         <>
         <Link to="/blog">

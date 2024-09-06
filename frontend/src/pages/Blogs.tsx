@@ -1,6 +1,7 @@
 import Avatar from "../components/Avatar"
 import BlogApp from "../components/BlogApp"
 import BlogCard from "../components/BlogCard"
+import Skeleton from "../components/Skeleton"
 import {useBlogs} from "../hooks"
 const Blogs=()=>{
         
@@ -8,12 +9,12 @@ const Blogs=()=>{
         console.log(blogs)
     if(loading){
         return <>
-        Loading...
+       <Skeleton/>
         </>
     }
     return(
         <>
-        <BlogApp name={"sas"} size="big" />
+        <BlogApp  />
         {
             blogs.map(data=>
                 <div>

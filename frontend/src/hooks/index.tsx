@@ -1,8 +1,7 @@
 import axios from 'axios'
 import {useState,useEffect} from 'react'
 import {BACKEND_URL} from '../../config'
-import {useParams} from 'react-router-dom'
-interface blogTypes{
+export interface blogTypes{
     id:number|string,
     title:string,
     content:string,
@@ -20,7 +19,7 @@ export const useBlog=({id}:{id:number|"string"})=>{
                 "Authorization":localStorage.getItem("jwt")
             }
         }).then(responce=>{
-            setBlog(responce.data.blog);
+            setBlog(responce?.data?.blog);
         setLoading(false);
         },[])
       
@@ -40,7 +39,7 @@ export const useBlogs =()=>{
                 "Authorization":localStorage.getItem("jwt")
             }
         }).then(responce=>{
-            setBlogs(responce.data.blogs);
+            setBlogs(responce?.data?.blogs);
         setLoading(false);
         },[])
       
