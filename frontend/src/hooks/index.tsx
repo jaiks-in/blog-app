@@ -1,67 +1,57 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { BACKEND_URL } from '../../config';
+import { useEffect, useState } from "react"
+import axios from "axios";
+import { BACKEND_URL } from "../../config";
 
-// Define the shape of the blog
-export interface BlogTypes {
-  id: number | string;
-  title: string;
-  content: string;
-  author: {
-    name: string;
-  };
+
+export interface Blog {
+    "content": string;
+    "title": string;
+    "id": number
+    "author": {
+        "name": string
+    }
 }
 
-// Hook to fetch a single blog by ID
-export const useBlog = ({ id }: { id: number | string }) => {
-  const [blog, setBlog] = useState<BlogTypes | undefined>(undefined); // Use undefined initially
-  const [loading, setLoading] = useState<boolean>(true); // Loading state
-  
-  useEffect(() => {
-    const fetchBlog = async () => {
-      try {
-        const response = await axios.get(`${BACKEND_URL}/api/v1/blog/${id}`, {
-          headers: {
-            Authorization: localStorage.getItem('jwt') || '', // Fallback to empty string if jwt is missing
-          },
-        });
-        setBlog(response?.data?.blog); // Set the blog data
-      } catch (error) {
-        console.error('Error fetching blog:', error); // Handle error (optional)
-      } finally {
-        setLoading(false); // Set loading to false once the request is completed
-      }
-    };
+export const useBlog = ({ id }: { id: string }) => {
+    const [loading, setLoading] = useState(true);
+    const [blog, setBlog] = useState<Blog>();
 
-    fetchBlog(); // Call the async function inside the useEffect hook
-  }, [id]);
+    useEffect(() => {
+        axios.get(`${BACKEND_URL}/api/v1/blog/${id}`, {
+            headers: {
+                Authorization: localStorage.getItem("token")
+            }
+        })
+            .then(response => {
+                setBlog(response.data.blog);
+                setLoading(false);
+            })
+    }, [id])
 
-  return { blog, loading };
-};
+    return {
+        loading,
+        blog
+    }
 
-// Hook to fetch a list of blogs
+}
 export const useBlogs = () => {
-  const [blogs, setBlogs] = useState<BlogTypes[]>([]); // Initialize with an empty array
-  const [loading, setLoading] = useState<boolean>(true); // Loading state
+    const [loading, setLoading] = useState(true);
+    const [blogs, setBlogs] = useState<Blog[]>([]);
 
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const response = await axios.get(`${BACKEND_URL}/api/v1/blog/`, {
-          headers: {
-            Authorization: localStorage.getItem('jwt') || '', // Fallback to empty string if jwt is missing
-          },
-        });
-        setBlogs(response?.data?.blogs); // Set the blogs data
-      } catch (error) {
-        console.error('Error fetching blogs:', error); // Handle error (optional)
-      } finally {
-        setLoading(false); // Set loading to false once the request is completed
-      }
-    };
+    useEffect(() => {
+        axios.get(`${BACKEND_URL}/api/v1/blog/bulk`, {
+            headers: {
+                Authorization: localStorage.getItem("token")
+            }
+        })
+            .then(response => {
+                setBlogs(response.data.blogs);
+                setLoading(false);
+            })
+    }, [])
 
-    fetchBlogs(); // Call the async function inside the useEffect hook
-  }, []);
-
-  return { blogs, loading };
-};
+    return {
+        loading,
+        blogs
+    }
+}
