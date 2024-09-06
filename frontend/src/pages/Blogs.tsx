@@ -12,6 +12,7 @@ const Blogs=()=>{
        <Skeleton/>
         </>
     }
+
     return(
         <>
         <BlogApp  />
@@ -23,6 +24,7 @@ const Blogs=()=>{
             authorName={data.author.name || ""}
             content={data.content}
             publishedDate="2nd feb"
+            id={data?.id}
             />
             </div>
             )

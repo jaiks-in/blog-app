@@ -6,12 +6,13 @@ interface BlogCardProps{
     title:string,
     content:string,
     publishedDate:string
+    id:number|""
 }
-const BlogCard =({authorName,title,content,publishedDate}:BlogCardProps)=>{
+const BlogCard =({authorName,title,content,publishedDate,id}:BlogCardProps)=>{
     const authName=authorName[0];
     return(
         <>
-        <Link to="/blog">
+        <Link to={`${id}`}>
             <Avatar name={authName} size="small"/>
             <span>{authorName}</span>
             <div>
