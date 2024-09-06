@@ -1,10 +1,10 @@
 import BlogApp from "./BlogApp";
-import { blogTypes } from "../hooks";
+import { BlogTypes } from "../hooks";
 import Avatar from "./Avatar";
 import Skeleton from "./Skeleton";
 
 
-const FullBlogCard=({blog}:{blog:blogTypes})=>{
+const FullBlogCard=({blog}:{blog:BlogTypes})=>{
     return(
         <>
        {
