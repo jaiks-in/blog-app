@@ -12,7 +12,7 @@ const BlogCard =({authorName,title,content,publishedDate,id}:BlogCardProps)=>{
     const authName=authorName[0];
     return(
         <>
-        <Link to={`${id}`}>
+        <Link to={`/blog/${id}`}>
             <Avatar name={authName} size="small"/>
             <span>{authorName}</span>
             <div>

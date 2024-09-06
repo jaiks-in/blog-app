@@ -19,8 +19,8 @@ function Publish() {
     e.preventDefault();
 
     // Safe way to access the input values, checking if ref is not null
-    const title = titleRef.current?.value || "";
-    const content = contentRef.current?.value || "";
+    const title = titleRef?.current?.value || "";
+    const content = contentRef?.current?.value || "";
 
     const blogData: DataType = {
       title,
