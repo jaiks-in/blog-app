@@ -1,36 +1,36 @@
-import Avatar from "../components/Avatar"
-import BlogApp from "../components/BlogApp"
-import BlogCard from "../components/BlogCard"
-import Skeleton from "../components/Skeleton"
-import {useBlogs} from "../hooks"
-const Blogs=()=>{
-        
-        const {blogs,loading}=useBlogs();
-        console.log(blogs)
-    if(loading){
-        return <>
-       <Skeleton/>
-        </>
-    }
+import BlogApp from "../components/BlogApp";
+import BlogCard from "../components/BlogCard";
+import Skeleton from "../components/Skeleton";
+import { useBlogs, BlogTypes } from "../hooks";
 
-    return(
-        <>
-        <BlogApp  />
-        {
-            blogs.map(data=>
-                <div>
-                
-            <BlogCard title={data.title} 
+const Blogs = () => {
+  const { blogs, loading } = useBlogs();
+  console.log(blogs);
+
+  if (loading) {
+    return (
+      <>
+        <Skeleton />
+      </>
+    );
+  }
+
+  return (
+    <>
+      <BlogApp />
+      {blogs.map((data: BlogTypes) => (
+        <div key={data.id}> {/* Use the `key` prop */}
+          <BlogCard
+            title={data.title}
             authorName={data.author.name || ""}
             content={data.content}
-            publishedDate="2nd feb"
-            id={data?.id}
-            />
-            </div>
-            )
-        }
-      
-        </>
-    )
-}
-export default Blogs
+            publishedDate="2nd Feb" // Modify to the actual published date if available
+            id={Number(data.id)} // Ensure the `id` is correctly passed
+          />
+        </div>
+      ))}
+    </>
+  );
+};
+
+export default Blogs;

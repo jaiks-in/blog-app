@@ -6,7 +6,7 @@ interface BlogCardProps{
     title:string,
     content:string,
     publishedDate:string
-    id:number|""
+    id:number
 }
 const BlogCard =({authorName,title,content,publishedDate,id}:BlogCardProps)=>{
     const authName=authorName[0];
