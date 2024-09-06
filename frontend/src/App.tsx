@@ -14,8 +14,8 @@ return (
         <Route path='/signin' element={<Signin/>}/>
       
         <Route path="/blog/:id" element={<Blog/>} />
-        <Route path='/' element={<Blogs/>}/>
-
+        
+        <Route path='/bulk' element={<Blogs/>}/>
         <Route path='/publish' element={<Publish/>}/>
     </Routes>
     </BrowserRouter>
