@@ -9,7 +9,7 @@ const FullBlogCard=({blog}:{blog:blogTypes})=>{
         <>
        {
            blog?  <div>
-           <BlogApp size="big" name={blog.author.name}/>
+           <BlogApp />
            <div>
            <Avatar size="big" name={blog.author.name} />
            <div>

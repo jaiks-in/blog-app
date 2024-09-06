@@ -10,15 +10,15 @@ interface dataType{
 
 function Publish(){
     const navigate =useNavigate()
-    const titleRef=useRef("");
-    const contentRef =useRef("");
+    const titleRef=useRef <HTMLInputElement>(null);
+    const contentRef =useRef<HTMLInputElement> (null);
        
         
 
     async function sendRequest(e){
         e.preventDefault()
-        const title=titleRef.current.value;
-        const content=contentRef.current.value;
+        const title=titleRef?.current.value;
+        const content=contentRef?.current.value;
         
         try{
            

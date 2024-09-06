@@ -1,7 +1,7 @@
 
 interface avatarPropType{
     name:string,
-    size:"small"|"big"}
+    size?:"small"|"big"}
 function Avatar({name,size ="small"}:avatarPropType){
     return(
         <>
